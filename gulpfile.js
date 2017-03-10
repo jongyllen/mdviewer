@@ -10,7 +10,7 @@ var paths = {
   elm: 'src/App.elm',
   allelm: 'src/*.elm',
   static: 'src/static/*.{html,css}',
-  docs: 'documents/*.{md,json}'
+  docs: 'private_documents/*.{md,json}'
 };
 
 // Init Elm
@@ -39,15 +39,9 @@ gulp.task('docs', function() {
 
 // Watch for changes and compile
 gulp.task('watch', function() {
-     gulp.watch(paths.allelm, function() {
-      // run styles upon changes
-      gulp.run('elm');
-   });
-
-    gulp.watch(paths.static, function() {
-      // run styles upon changes
-      gulp.run('static');
-   });
+     gulp.watch(paths.allelm, ['elm']);
+     gulp.watch(paths.static, ['static']);
+     gulp.watch(paths.docs, ['docs']);
 });
 
 // Local server
