@@ -35,7 +35,7 @@ rootView model =
         [ ul [ class "nav nav-sidebar" ] <|
             List.map (viewFileEntry model) model.files
         ]
-        , Markdown.toHtml [class "col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"] model.selectedContent 
+        , Markdown.toHtml [class "col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"] (Maybe.withDefault "" model.selectedContent)
       ]
     ]
   ]

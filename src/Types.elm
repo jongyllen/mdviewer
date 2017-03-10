@@ -4,7 +4,7 @@ import Http
 
 type alias Model =
     { files : List File,
-      selectedContent : String
+      selectedContent : Maybe String
     }
 
 type Msg
@@ -19,4 +19,4 @@ type alias File =
 
 initialModel : Model
 initialModel =
-    Model [] ""
+    Model [] Nothing

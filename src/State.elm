@@ -18,11 +18,11 @@ update msg model =
         FetchFileList (Err _) ->
             model ! []
 
-        FetchFile (Ok fileLcontent) ->
-            { model | selectedContent = fileLcontent } ! []
+        FetchFile (Ok filecontent) ->
+            { model | selectedContent = Just filecontent } ! []
 
         FetchFile (Err _) ->
-            model ! []
+            { model | selectedContent = Just "Error getting content" } ! []
 
         FetchFileClick url ->
             let
