@@ -7,7 +7,7 @@ import Types exposing (Msg(..), File)
 getFileList : Cmd Msg
 getFileList =
     Http.send FetchFileList <|
-        Http.get "documents/list.json" decodeFileList
+        Http.get "public/documents" decodeFileList
 
 decodeFileList : Json.Decoder (List File)
 decodeFileList =

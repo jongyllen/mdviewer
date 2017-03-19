@@ -6,11 +6,10 @@ var connect = require('gulp-connect');
 
 // File paths
 var paths = {
-  dest: 'dist',
+  dest: 'public',
   elm: 'src/App.elm',
   allelm: 'src/*.elm',
-  static: 'src/static/*.{html,css}',
-  docs: 'private_documents/*.{md,json}'
+  static: 'src/static/*.{html,css}'
 };
 
 // Init Elm
@@ -31,17 +30,10 @@ gulp.task('static', function() {
         .pipe(gulp.dest(paths.dest));
 });
 
-gulp.task('docs', function() {
-    return gulp.src(paths.docs)
-        .pipe(plumber())
-        .pipe(gulp.dest(paths.dest + '/documents'));
-});
-
 // Watch for changes and compile
 gulp.task('watch', function() {
      gulp.watch(paths.allelm, ['elm']);
      gulp.watch(paths.static, ['static']);
-     gulp.watch(paths.docs, ['docs']);
 });
 
 // Local server
@@ -53,5 +45,5 @@ gulp.task('connect', function() {
 });
 
 // Main gulp tasks
-gulp.task('build', ['elm', 'static', 'docs']);
+gulp.task('build', ['elm', 'static']);
 gulp.task('default', ['connect', 'build', 'watch']);
